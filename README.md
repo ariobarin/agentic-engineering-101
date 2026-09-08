@@ -1,223 +1,85 @@
 # Agentic Engineering 101: AI Coding Tools for Students
 
-A guide to AI coding agents for university students who get ridiculous amounts of free compute, credits, and trials. Seriously, use the hell out of the student perks while you still have them. These companies are lighting money on fire to win users. You might as well stand near the fire.
+University students get a lot of free credits and discounted access to coding agents. Seriously, take advantage of it while you can. This is a guide to choosing a tool, understanding what you're paying for, and getting useful work out of it.
 
-> Last reviewed: July 13, 2026. Pricing, quotas, models, and student offers change constantly. The numbers below are approximate on purpose. Approximate does not mean useless.
+> Reviewed September 8, 2026. Prices are USD before tax. Check the linked offer before paying; eligibility, models, and limits change.
 
-## Quick Reference
+## Where I'd start
 
-| Tool | What you actually get | Best for | Student perk |
-|------|------------------------|----------|--------------|
-| **OpenAI Codex** | **Plus $20:** roughly **$700/month** API-retail equivalent at the ceiling. **Pro 5x $100:** roughly **$3,500/month**. **Pro 20x $200:** up to roughly **$14,000/month**. | Best overall. Long tasks, repo-wide work, parallel agents, worktrees, PRs. | [Eligible US and Canadian university students get $100 in ChatGPT credits for Codex](https://developers.openai.com/community/students) |
-| **Claude Code** | **Pro $20:** roughly **$400/month** API-retail equivalent. **Max 5x $100:** roughly **$2,000/month**. **Max 20x $200:** up to roughly **$8,000/month**. Limits reset every five hours, with weekly and monthly caps possible. | Precise edits, planning, front-end work, taste. | Mostly institution-wide through [Claude for Education](https://claude.com/solutions/education), not a universal individual discount |
-| **GitHub Copilot** | Free gives 2,000 completions/month. Pro $10 includes **$15** in monthly AI credits, Pro+ $39 includes **$70**, Max $100 includes **$200**. | IDE integration, autocomplete, boring reliability. | [Copilot Student is free for verified students](https://github.com/education/students) |
-| **Cursor** | Free tier, then Pro starts at $20/month with a bundled model-usage bucket and metered overage. Cursor does not publish a clean API-dollar equivalent anymore. | Fast editor-first experiments and quick changes. | The blanket free year is dead. Current student discounts are event promotions through [Cursor Students](https://cursor.com/students) |
-| **OpenCode** | The app is open source. Use free models or plug in whatever provider is cheapest this week. | Best open, provider-flexible terminal UX. Parallel sessions are excellent. | Free to install |
-| **Gemini CLI** | **60 requests/minute and 1,000 requests/day** with a personal Google account. That is an absurd free allowance even if the UX is still clunky. | Free terminal backup, huge context, Google Search grounding. | No student verification required |
-| **Google Antigravity** | Plan-dependent limits. Google AI plans expand them, but Google still does not publish a useful universal dollar equivalent. | Planning and agent-first IDE experiments. | Often bundled into Google AI plans |
-| **Google AI Studio** | Free access varies by model and region, and the limits are still difficult to hit for ordinary prototyping. | Prompting, model testing, one-off prototypes. | Free tier |
-| **Perplexity Education Pro** | Discounted Pro access for verified students and educators. | Research, source discovery, and getting unstuck before coding. | [Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro) |
+My setup is built around **Codex**. I want to give it a repository and a problem, talk through the approach, and get back a change I can review. The interface matters too, especially when I'm talking through ideas or working on several tasks at once.
 
-### What “API-retail equivalent” means
+Start with the access you already have. Pick a small project you actually want to build and use it enough to find out where you get stuck. You don't need three subscriptions before you've made anything.
 
-It means: if you bought the same token volume through the public API, what would the retail bill look like?
+| Tool | Access worth knowing about | What to check |
+| --- | --- | --- |
+| [Codex](https://learn.chatgpt.com/docs/pricing) | Plus is $20/month; Pro 5x is $100 and Pro 20x is $200. | [Eligible university students in the US and Canada can claim $100 in ChatGPT credits for Codex](https://developers.openai.com/community/students). These are not API credits. One grant per student; expires after 12 months. |
+| [Claude Code](https://claude.com/pricing) | Included in Pro, $20 billed monthly; Max starts at $100. | [Claude and Claude Code share plan limits](https://support.claude.com/en/articles/11145838-use-claude-code-with-your-pro-or-max-plan). Check whether your university provides [Claude for Education](https://claude.com/solutions/education). |
+| [GitHub Copilot Student](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students) | Free for verified students, with unlimited code completions and an AI-credit allowance. | The [Student plan uses automatic model selection and excludes third-party agents](https://docs.github.com/en/copilot/get-started/plans). It does not give you everything in paid Pro. |
+| [Cursor](https://cursor.com/pricing) | Free tier; Pro starts at $20/month. | The [student page](https://cursor.com/students) currently points to campus and online event promotions. It no longer promises everyone a free year. |
+| [Gemini CLI](https://geminicli.com/docs/resources/quota-and-pricing/) | Up to 1,000 model requests/day through a personal Google account with Code Assist for individuals. | The unpaid API-key route has a different allowance: 250 requests/day to Flash. One agent task can take multiple model requests. |
+| [OpenCode](https://opencode.ai/docs/) | Open-source agent with a terminal interface and support for different model providers. | Installing the agent is free. Model usage depends on the provider you connect. |
 
-It does **not** mean OpenAI or Anthropic literally spent that much serving you. API prices include margin. It is still the only sane common unit for comparing subscriptions that hide their real token allowances behind “5x usage,” rolling windows, and vibes.
+[Antigravity](https://antigravity.google/pricing) also has a free individual tier with weekly limits. [AI Studio](https://ai.google.dev/gemini-api/docs/pricing) is useful for model and API experiments; free access and data-use terms depend on the model and tier. For research, [Perplexity Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro) is a discounted plan for verified students and educators. Follow its citations through to the original work.
 
-[SemiAnalysis bought every OpenAI and Anthropic subscription tier](https://x.com/SemiAnalysis_/status/2064815044085318040), ran long-horizon coding tasks until the weekly limits were dead, then converted the consumed tokens to API retail prices. Their measured ceilings were roughly **$14,000/month for ChatGPT Pro 20x** and **$8,000/month for Claude Max 20x**. [Tom's Guide](https://www.tomsguide.com/ai/the-math-doesnt-work-why-your-usd200-ai-subscription-is-secretly-worth-thousands) and [Tom's Hardware](https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-costs-spike-as-subscriptions-hit-pricing-wall-firms-turn-towards-chinese-llms-open-source-models-to-extend-budget) both reported the methodology and results.
+Model choice changes faster than this guide. For a shortlist, look at [Artificial Analysis](https://artificialanalysis.ai/) or my [Which LLM](https://github.com/ariobarin/which-llm), then try the candidates on your own task. Compare the finished result, time spent correcting it, and cost. A model score and a coding-agent score measure different things, and cheap tokens can still produce an expensive task.
 
-The lower-tier estimates in this guide are simple linear approximations from those measured 20x ceilings and the providers' official 1x, 5x, and 20x ratios:
+## How much usage do you actually get?
 
-| Plan | Subscription price | Rough API-retail ceiling | Retail value / price |
-|------|--------------------|---------------------------|----------------------|
-| ChatGPT Plus | $20/month | ~$700/month | ~35x |
-| ChatGPT Pro 5x | $100/month | ~$3,500/month | ~35x |
-| ChatGPT Pro 20x | $200/month | ~$14,000/month measured by SemiAnalysis | ~70x |
-| Claude Pro | $20/month | ~$400/month | ~20x |
-| Claude Max 5x | $100/month | ~$2,000/month | ~20x |
-| Claude Max 20x | $200/month | ~$8,000/month measured by SemiAnalysis | ~40x |
+“5x usage” tells you very little about whether you can work all afternoon. A subscription can give a heavy user far more usage than buying the same tokens through an API, but the workload matters.
 
-Real usage is not perfectly linear. Model choice, caching, task length, hidden reasoning, tool calls, and provider throttling all matter. Use the number. Do not worship the number.
+**API-equivalent cost** means pricing the tokens you used at public API rates. It compares usage with a hypothetical API bill. It is not your subscription bill or a balance you can spend, and it does not tell you what the provider spent serving you.
 
-## Tier 1: Worth Paying For
+### What people have measured
 
-### [OpenAI Codex](https://openai.com/codex/)
+In its **June 10, 2026** [subscription experiment](https://x.com/SemiAnalysis_/status/2064815044085318040), SemiAnalysis reported approximate monthly API-equivalent maxima of **$14,000 for the $200 ChatGPT Pro plan** and **$8,000 for the $200 Claude Max plan**. It bought one subscription per tier and ran long coding tasks until the weekly limits were exhausted. The [readable thread](https://threadreaderapp.com/thread/2064815044085318040.html) describes the method; [Tom's Guide reproduces the chart](https://www.tomsguide.com/ai/the-math-doesnt-work-why-your-usd200-ai-subscription-is-secretly-worth-thousands), rather than repeating the experiment.
 
-This is still the best overall coding agent. Not “one of the best.” The best.
+Those are historical estimates, not September quotas. The public thread does not provide raw usage logs or the exact monthly extrapolation. Dividing the figures by 20 does not establish what today's entry-level plans provide.
 
-Codex is strongest when the task is bigger than one file: understanding a repository, planning a change, editing across the codebase, running tests, opening pull requests, working in separate worktrees, and delegating independent work to subagents. It is the tool I trust most to take a real engineering task from “here is the problem” to “here is the verified diff.”
+[u/xzlllwyyy's Codex log audit](https://www.reddit.com/r/codex/comments/1w1ne3f/my_first_week_after_switching_from_claude_code_to/), retrieved September 8, 2026, estimates **about $102 of API-priced usage across 16 GPT-5.6 Sol sessions**. Most of that estimate comes from cached input, context the model rereads at a discounted rate. The author describes the counting method but does not publish raw logs. This is a reported workload, not a plan ceiling.
 
-The limits are also ridiculous. OpenAI officially sells Plus at $20, Pro 5x at $100, and Pro 20x at $200. SemiAnalysis managed to push the 20x tier to roughly $14,000 of API-equivalent token usage in a month. Even if your workload only extracts a fraction of that, the subscription economics are completely insane.
+### Measure your own week
 
-The weak spot is still front-end taste. Codex can build the UI, but it gets sloppy when the visual details matter. For polished front-end work, I still prefer Claude, then I verify the result in a real browser instead of trusting a screenshot and a victory speech.
+Use the provider's usage page to see limits and reset times. [ccusage](https://ccusage.com/guide/) can estimate API cost from local logs; check its [model-pricing and fallback rules](https://ccusage.com/guide/codex/) before trusting a total. Even usage counters can [count the same event twice](https://github.com/ccusage/ccusage/pull/1687).
 
-The student deal is real: verified university students in the US and Canada can claim **$100 in ChatGPT credits for Codex**. These are not API credits. They extend Codex usage in ChatGPT and expire 12 months after the grant date.
+Record the work you finished and when limits interrupted it. Compare that with the subscription fee or API bill before upgrading. Exhausting a plan with repeated failed attempts is not the same as getting value from it.
 
-### [Claude Code](https://claude.com/product/claude-code)
+## How I work with agents
 
-Claude Code is still really, really good. Its planning is excellent, its edits are precise, and it has better visual taste than Codex. When I care about front-end polish or I want a careful surgical change instead of an agent bulldozing through the repository, Claude is usually my second tool.
+### Get the understanding right
 
-The annoying part is the meter. Claude Pro resets every five hours and Anthropic says a light chat workload gets around 45 short messages per window. Max 5x gets at least 225, and Max 20x gets at least 900. Those are chat-style estimates, not coding sessions. Claude Code burns through context, tool calls, and hidden work much faster, so do not look at “900 messages” and imagine 900 giant repo tasks.
+For an unfamiliar project or a broad change, I want the agent to inspect what exists and explain what it thinks I'm asking for before it starts changing things. Give it the actual problem, the relevant files, examples, and constraints. If the explanation is wrong, fix that first.
 
-The subscription is still an absurd deal. SemiAnalysis measured the $200 Max 20x ceiling at roughly $8,000/month in API-retail usage. The rough linear equivalents are about $400 for Pro and $2,000 for Max 5x.
+I dictate a lot. It lets me talk through the reasoning, including the parts I'm unsure about. When delegating, pass along the relevant original explanation too. An agent's summary can preserve the facts and lose the reason I cared about them. This matters especially for writing and design.
 
-There is no universal individual student discount. The real education route is [Claude for Education](https://claude.com/solutions/education), which is sold to universities. If your school has it, great. If not, yelling “but I am a student” at the pricing page does nothing.
+[Wispr Flow](https://wisprflow.ai) is one option for dictation. If you want to use my referral links, here are [Flow](https://wisprflow.ai/r?ARIO16) and [Perplexity](https://plex.it/referrals/8N3ELADE).
 
-### [Cursor](https://cursor.com/)
+### Make the project easy to operate
 
-Cursor is still great for random vibe-coding experiments and fast editor changes. The UX is polished, Tab is useful, and sometimes you just want to stay inside a VS Code-shaped thing instead of living in a terminal.
+Put the setup and verification commands in the repository's [AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), or the tool's equivalent. Include the constraints the agent cannot infer from the code. Keep it short enough to read as a whole.
 
-It is not my main tool anymore. The old automatic one-year-free student deal is gone, and Cursor's current pricing is deliberately less clean than the old “you get about this much API credit” model. Pro starts at $20, each tier includes a model-usage bucket, and overage is billed after that. Cursor itself recommends Pro+ for daily agent use and Ultra for power users.
+Fix missing dependencies, expired sessions, or broken test commands before treating a failed run as evidence that the model cannot do the task. Give it access to useful diagnostics, including language-server tools where supported. Then check the actual changed behavior.
 
-So the honest summary is simple: start free, pay if the editor workflow clicks for you, and watch the usage meter. Do not pretend the current student page is still the old deal. It is not.
+### Delegate work that can be done independently
 
-## Tier 2: Ridiculous Value Because It Is Free or Subsidized
+A subagent can investigate a separate question while the main agent keeps working. Give it enough context, a clear responsibility, and a result to bring back. Review what comes back; the first answer is not automatically good enough.
 
-### [GitHub Copilot](https://github.com/features/copilot)
+For independent changes, use [separate worktrees](https://learn.chatgpt.com/docs/environments/git-worktrees) so each task has its own checkout and branch. If agents share a checkout, give them distinct file ownership. A branch name alone does not isolate files. Keep each pull request focused enough to review.
 
-Copilot is boring in the best possible way. It is everywhere, it integrates with the IDE, and verified students get it free.
+### Verify what you wanted
 
-The current consumer plans are also unusually transparent: Pro costs $10 and includes $15 in monthly AI credits, Pro+ costs $39 and includes $70, and Max costs $100 and includes $200. The free plan gives 2,000 completions per month. GitHub finally put actual dollar-denominated usage numbers on the page instead of making everyone reverse-engineer “premium request multipliers.” Good.
+For a bug, get a reproduction that fails before the fix and succeeds afterward. For a UI change, use the interface and check the interaction you asked for. A passing build cannot tell you whether the page makes sense.
 
-Would I choose Copilot over Codex for serious autonomous work? No. Would I install it for free as a student? Obviously. Not doing that is just leaving value on the table for no reason.
+Use the checks that could expose a real failure in the change. Read the diff, look at the evidence, and stop adding checks once the remaining uncertainty is resolved. Simon Willison's [August 22 note on verification](https://simonwillison.net/2026/Aug/22/more-than-just-code-review/) makes a useful point: reviewing every line is only one way to establish that a change is correct.
 
-### [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+### Add skills when they fix something
 
-The UX is still clunky. The free allowance is still stupidly good.
+The agent already knows a lot. What I want from a skill is better judgment where its default behavior keeps going wrong: diagnosing before guessing, checking sources, or pruning a draft instead of accepting the first thing it wrote.
 
-A personal Google account gets **60 requests per minute and 1,000 requests per day**, plus Gemini models with a one-million-token context window, shell and file tools, web fetching, Google Search grounding, and MCP support. That is not a cute demo tier. That is enough free usage to make it a serious backup agent.
+I maintain [Compass](https://github.com/ariobarin/compass) for my Codex instructions, skills, and agents. I took inspiration from [Lauren Tan's pstack](https://github.com/cursor/plugins/tree/main/pstack/skills) and [Matt Pocock's skills](https://github.com/mattpocock/skills), then adapted the parts that fit how I work. Things have to earn their place. Read the skill, understand the behavior it is meant to change, and see whether it helps before adding another one.
 
-I would not make it my primary tool unless the experience improves, but when the good subscriptions are tapped out or the task benefits from huge context and Google Search, use it.
+Useful examples are Compass's [diagnosing-bugs](https://github.com/ariobarin/compass/blob/main/codex/skills/diagnosing-bugs/SKILL.md), [ground-in-sources](https://github.com/ariobarin/compass/blob/main/codex/skills/ground-in-sources/SKILL.md), and [test-for-risk](https://github.com/ariobarin/compass/blob/main/codex/skills/test-for-risk/SKILL.md). The [Agent Skills specification](https://agentskills.io/specification) explains the file format.
 
-### [OpenCode](https://opencode.ai/)
-
-OpenCode has one of the best terminal interfaces in the category. It feels a lot like Claude Code, supports LSP, runs multiple sessions in parallel, and lets you connect different providers instead of marrying one company forever.
-
-The app is free and open source. Model usage depends on what you connect. Use the free models for disposable work, then route hard tasks to a stronger provider when the cheap model starts hallucinating its way through the type system.
-
-## Tier 3: Useful, But Not My Main Coding Agent
-
-### [Google Antigravity](https://antigravity.google/)
-
-Antigravity is Google's agent-first development environment. It is decent for planning and experiments. The UX is not good enough for me to live in it, and the public limits are too plan-dependent to pretend there is one clean dollar figure.
-
-Use it when it is bundled into something you already pay for. Do not buy an entire Google plan just because one marketing page says “agentic.”
-
-### [Google AI Studio](https://aistudio.google.com/)
-
-AI Studio is excellent for testing prompts, comparing models, playing with long context, and building quick API prototypes. It is not a replacement for a repository-aware coding agent.
-
-The free usage can be enormous depending on the model and region. Treat it as a lab bench, not your main workshop.
-
-### [Perplexity Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro)
-
-Perplexity is not my coding agent. It is my “find the source, compare the docs, and stop guessing” tool.
-
-The old free-year student deal is gone. The current offer is Education Pro, a discounted plan for verified students and educators. Still useful, just not the lottery ticket it used to be.
-
-Here is my [Perplexity referral link](https://plex.it/referrals/8N3ELADE) if you want to help me out.
-
-## Pro Tips
-
-### Put Instructions in the Repository
-
-Stop pasting a giant system prompt into every new session. Put an `AGENTS.md` or the tool-specific equivalent in the repository.
-
-Include the actual setup commands, test commands, style rules, architecture boundaries, dangerous areas, and definition of done. The agent should not have to rediscover your project every time like it woke up with amnesia.
-
-### Use LSP
-
-LSP stands for Language Server Protocol. It gives the agent real-time information about type errors, missing imports, symbols, and syntax.
-
-Turn it on. An agent with LSP can catch mistakes while writing. An agent without it is guessing, running the build, failing, and acting surprised.
-
-### Use Skills and Subagents
-
-Skills are reusable workflows. Subagents are fresh workers for narrow jobs.
-
-Use them for independent research, implementation, tests, review, migrations, or separate bug fixes. Do not spawn eight agents into the same branch and call it orchestration. That is just a race condition with a chat interface.
-
-Useful starting points:
-
-- [Codex skills](https://learn.chatgpt.com/docs/build-skills)
-- [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents)
-- [Claude Code skills](https://code.claude.com/docs/en/skills)
-- [Claude Code subagents](https://code.claude.com/docs/en/sub-agents)
-
-### Use One Branch or Worktree per Task
-
-Parallel agents are only useful if they stop stepping on each other.
-
-Give every independent task its own branch or worktree. Keep the scope small. Review through pull requests. Merge after the tests pass. This is not glamorous, but neither is recovering three agents' half-overwritten changes from one dirty working tree.
-
-### Require Verification
-
-“Done” is not evidence.
-
-Make the agent run the tests, linter, type checker, build, and browser checks that matter. Make it report the actual output. Read the diff. Agents are very good at sounding finished five minutes before they are finished.
-
-### Use Agent Apps for Multi-Tasking
-
-If you have twelve terminal windows open like a maniac, use an app that can manage parallel sessions cleanly. The Codex app and T3 Code are interfaces around the agents, not magical new model providers, but the interface matters when you are juggling real work.
-
-### Use Voice Dictation
-
-[Wispr Flow](https://wisprflow.ai) is still excellent for talking through code, file names, and structured instructions without typing everything. Here is my [referral link](https://wisprflow.ai/r?ARIO16).
-
-### Check the Data Policy
-
-Free compute is not charity.
-
-Before feeding a tool private coursework, unpublished research, credentials, client data, or company code, read the current data-use settings. Turn on privacy mode where it exists. Keep secrets out of prompts. “But the model needed my production token” is not a security strategy.
-
-## My Durable Setup: [Compass](https://github.com/ariobarin/compass)
-
-Want the actual setup behind this guide instead of another folder full of random prompts? Use **Compass**.
-
-Compass is my reviewed, portable agent setup. It contains the instructions, agents, skills, workflows, install wiring, and verification scripts I use across Codex and related tools. It is opinionated because generic configuration is usually useless configuration.
-
-## My Workflow
-
-| Situation | Tool |
-|-----------|------|
-| Most coding tasks | **OpenAI Codex** |
-| Starting from scratch and planning carefully | **Codex** or **Claude Code** |
-| Quick, precise edits | **Claude Code** |
-| Front-end work that needs to actually look good | **Claude Code**, then verify in a browser |
-| Random vibe-coding experiments | **Cursor** |
-| IDE autocomplete that costs students nothing | **GitHub Copilot** |
-| Open or provider-flexible terminal workflow | **OpenCode** |
-| Free backup with gigantic limits | **Gemini CLI** |
-| Research and source discovery | **Perplexity** |
-| Durable instructions, skills, and workflows | **Compass** |
-
-The exact model matters less than the engineering loop around it: give the agent real context, isolate the work, make it verify the result, review the diff, and stop accepting confident nonsense as evidence.
-
-## Sources
-
-### Usage economics
-
-- [SemiAnalysis subscription stress test](https://x.com/SemiAnalysis_/status/2064815044085318040)
-- [Tom's Guide summary of the SemiAnalysis results](https://www.tomsguide.com/ai/the-math-doesnt-work-why-your-usd200-ai-subscription-is-secretly-worth-thousands)
-- [Tom's Hardware summary of the SemiAnalysis results](https://www.tomshardware.com/tech-industry/artificial-intelligence/ai-costs-spike-as-subscriptions-hit-pricing-wall-firms-turn-towards-chinese-llms-open-source-models-to-extend-budget)
-
-### Official pricing and limits
-
-- [ChatGPT pricing](https://chatgpt.com/pricing/)
-- [ChatGPT Pro 5x and 20x tiers](https://help.openai.com/en/articles/9793128)
-- [Codex for Students](https://developers.openai.com/community/students)
-- [Claude pricing](https://claude.com/pricing)
-- [Claude Pro usage limits](https://support.claude.com/en/articles/8324991-about-claude-s-pro-plan-usage)
-- [Claude Max usage limits](https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage)
-- [GitHub Copilot pricing](https://github.com/features/copilot/plans)
-- [GitHub Education for students](https://github.com/education/students)
-- [Cursor pricing](https://cursor.com/pricing)
-- [Cursor for Students](https://cursor.com/students)
-- [Gemini CLI](https://github.com/google-gemini/gemini-cli)
-- [OpenCode](https://opencode.ai/)
-- [Perplexity Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro)
-
-Happy coding. Use the credits before somebody in finance notices.
+Before connecting private coursework, research, or company code, check the tool's data-use settings and the rules governing that material. Keep credentials out of prompts. A free plan is not permission to upload somebody else's work.
 
 ## License
 
