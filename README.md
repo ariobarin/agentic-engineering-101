@@ -4,6 +4,14 @@ A guide to AI coding agents for university students who get ridiculous amounts o
 
 > Last reviewed: July 13, 2026. Pricing, quotas, models, and student offers change constantly. The numbers below are approximate on purpose. Approximate does not mean useless.
 
+**New here?** Do three things:
+
+1. Claim the free stuff you qualify for: [Codex student credits](https://developers.openai.com/community/students) and [Copilot Student](https://github.com/education/students).
+2. Pick **one** agent from [Tier 1](#tier-1-worth-paying-for) and build something small you actually want. Don't stack subscriptions before you've shipped anything.
+3. Read the [Pro Tips](#pro-tips). The loop around the agent matters more than which agent you picked.
+
+**Contents:** [Quick Reference](#quick-reference) · [Tier 1](#tier-1-worth-paying-for) · [Tier 2](#tier-2-ridiculous-value-because-it-is-free-or-subsidized) · [Tier 3](#tier-3-useful-but-not-my-main-coding-agent) · [Pro Tips](#pro-tips) · [My Workflow](#my-workflow) · [Sources](#sources)
+
 ## Quick Reference
 
 | Tool | What you actually get | Best for | Student perk |
@@ -18,7 +26,8 @@ A guide to AI coding agents for university students who get ridiculous amounts o
 | **Google AI Studio** | Free access varies by model and region, and the limits are still difficult to hit for ordinary prototyping. | Prompting, model testing, one-off prototypes. | Free tier |
 | **Perplexity Education Pro** | Discounted Pro access for verified students and educators. | Research, source discovery, and getting unstuck before coding. | [Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro) |
 
-### What “API-retail equivalent” means
+<details>
+<summary><b>What “API-retail equivalent” means, and where the numbers come from</b></summary>
 
 It means: if you bought the same token volume through the public API, what would the retail bill look like?
 
@@ -38,6 +47,8 @@ The lower-tier estimates in this guide are simple linear approximations from tho
 | Claude Max 20x | $200/month | ~$8,000/month measured by SemiAnalysis | ~40x |
 
 Real usage is not perfectly linear. Model choice, caching, task length, hidden reasoning, tool calls, and provider throttling all matter. Use the number. Do not worship the number.
+
+</details>
 
 ## Tier 1: Worth Paying For
 
@@ -170,12 +181,6 @@ Free compute is not charity.
 
 Before feeding a tool private coursework, unpublished research, credentials, client data, or company code, read the current data-use settings. Turn on privacy mode where it exists. Keep secrets out of prompts. “But the model needed my production token” is not a security strategy.
 
-## My Durable Setup: [Compass](https://github.com/ariobarin/compass)
-
-Want the actual setup behind this guide instead of another folder full of random prompts? Use **Compass**.
-
-Compass is my reviewed, portable agent setup. It contains the instructions, agents, skills, workflows, install wiring, and verification scripts I use across Codex and related tools. It is opinionated because generic configuration is usually useless configuration.
-
 ## My Workflow
 
 | Situation | Tool |
@@ -192,6 +197,12 @@ Compass is my reviewed, portable agent setup. It contains the instructions, agen
 | Durable instructions, skills, and workflows | **Compass** |
 
 The exact model matters less than the engineering loop around it: give the agent real context, isolate the work, make it verify the result, review the diff, and stop accepting confident nonsense as evidence.
+
+## My Durable Setup: [Compass](https://github.com/ariobarin/compass)
+
+Want the actual setup behind this guide instead of another folder full of random prompts? Use **Compass**.
+
+Compass is my reviewed, portable agent setup. It contains the instructions, agents, skills, workflows, install wiring, and verification scripts I use across Codex and related tools. It is opinionated because generic configuration is usually useless configuration.
 
 ## Sources
 
