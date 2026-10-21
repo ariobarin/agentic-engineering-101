@@ -43,33 +43,31 @@ Real usage is not perfectly linear. Model choice, caching, task length, hidden r
 
 ### [OpenAI Codex](https://openai.com/codex/)
 
-This is still the best overall coding agent. Not “one of the best.” The best.
+This is the best overall coding agent. Not “one of the best.” The best.
 
 Codex is strongest when the task is bigger than one file: understanding a repository, planning a change, editing across the codebase, running tests, opening pull requests, working in separate worktrees, and delegating independent work to subagents. It is the tool I trust most to take a real engineering task from “here is the problem” to “here is the verified diff.”
 
-The limits are also ridiculous. OpenAI officially sells Plus at $20, Pro 5x at $100, and Pro 20x at $200. SemiAnalysis managed to push the 20x tier to roughly $14,000 of API-equivalent token usage in a month. Even if your workload only extracts a fraction of that, the subscription economics are completely insane.
+The limits are also ridiculous (see the table above). Even if your workload only extracts a fraction of that, the subscription economics are completely insane.
 
-The weak spot is still front-end taste. Codex can build the UI, but it gets sloppy when the visual details matter. For polished front-end work, I still prefer Claude, then I verify the result in a real browser instead of trusting a screenshot and a victory speech.
+The weak spot is front-end taste. Codex can build the UI, but it gets sloppy when the visual details matter. For polished front-end work, I still prefer Claude, then I verify the result in a real browser instead of trusting a screenshot and a victory speech.
 
 The student deal is real: verified university students in the US and Canada can claim **$100 in ChatGPT credits for Codex**. These are not API credits. They extend Codex usage in ChatGPT and expire 12 months after the grant date.
 
 ### [Claude Code](https://claude.com/product/claude-code)
 
-Claude Code is still really, really good. Its planning is excellent, its edits are precise, and it has better visual taste than Codex. When I care about front-end polish or I want a careful surgical change instead of an agent bulldozing through the repository, Claude is usually my second tool.
+Claude Code is really, really good. Its planning is excellent, its edits are precise, and it has better visual taste than Codex. When I care about front-end polish or I want a careful surgical change instead of an agent bulldozing through the repository, Claude is usually my second tool.
 
-The annoying part is the meter. Claude Pro resets every five hours and Anthropic says a light chat workload gets around 45 short messages per window. Max 5x gets at least 225, and Max 20x gets at least 900. Those are chat-style estimates, not coding sessions. Claude Code burns through context, tool calls, and hidden work much faster, so do not look at “900 messages” and imagine 900 giant repo tasks.
-
-The subscription is still an absurd deal. SemiAnalysis measured the $200 Max 20x ceiling at roughly $8,000/month in API-retail usage. The rough linear equivalents are about $400 for Pro and $2,000 for Max 5x.
+The annoying part is the meter. Claude Pro resets every five hours and Anthropic says a light chat workload gets around 45 short messages per window. Max 5x gets at least 225, and Max 20x gets at least 900. Those are chat-style estimates, not coding sessions. Claude Code burns through context, tool calls, and hidden work much faster, so do not look at “900 messages” and imagine 900 giant repo tasks. The subscription is still an absurd deal (see the table above).
 
 There is no universal individual student discount. The real education route is [Claude for Education](https://claude.com/solutions/education), which is sold to universities. If your school has it, great. If not, yelling “but I am a student” at the pricing page does nothing.
 
 ### [Cursor](https://cursor.com/)
 
-Cursor is still great for random vibe-coding experiments and fast editor changes. The UX is polished, Tab is useful, and sometimes you just want to stay inside a VS Code-shaped thing instead of living in a terminal.
+Cursor is great for random vibe-coding experiments and fast editor changes. The UX is polished, Tab is useful, and sometimes you just want to stay inside a VS Code-shaped thing instead of living in a terminal.
 
 It is not my main tool anymore. The old automatic one-year-free student deal is gone, and Cursor's current pricing is deliberately less clean than the old “you get about this much API credit” model. Pro starts at $20, each tier includes a model-usage bucket, and overage is billed after that. Cursor itself recommends Pro+ for daily agent use and Ultra for power users.
 
-So the honest summary is simple: start free, pay if the editor workflow clicks for you, and watch the usage meter. Do not pretend the current student page is still the old deal. It is not.
+Start free, pay if the editor workflow clicks for you, and watch the usage meter.
 
 ## Tier 2: Ridiculous Value Because It Is Free or Subsidized
 
@@ -77,7 +75,7 @@ So the honest summary is simple: start free, pay if the editor workflow clicks f
 
 Copilot is boring in the best possible way. It is everywhere, it integrates with the IDE, and verified students get it free.
 
-The current consumer plans are also unusually transparent: Pro costs $10 and includes $15 in monthly AI credits, Pro+ costs $39 and includes $70, and Max costs $100 and includes $200. The free plan gives 2,000 completions per month. GitHub finally put actual dollar-denominated usage numbers on the page instead of making everyone reverse-engineer “premium request multipliers.” Good.
+The paid plans are also unusually transparent: each one lists its monthly AI credits in dollars (table above) instead of making everyone reverse-engineer “premium request multipliers.” Good.
 
 Would I choose Copilot over Codex for serious autonomous work? No. Would I install it for free as a student? Obviously. Not doing that is just leaving value on the table for no reason.
 
