@@ -8,12 +8,12 @@ A guide to AI coding agents for university students who get ridiculous amounts o
 
 | Tool | What you actually get | Best for | Student perk |
 |------|------------------------|----------|--------------|
-| **OpenAI Codex** | **Plus $20:** roughly **$700/month** API-retail equivalent at the ceiling. **Pro 5x $100:** roughly **$3,500/month**. **Pro 20x $200:** up to roughly **$14,000/month**. | Best overall. Long tasks, repo-wide work, parallel agents, worktrees, PRs. | [Eligible US and Canadian university students get $100 in ChatGPT credits for Codex](https://developers.openai.com/community/students) |
+| **OpenAI Codex** | **Plus $20:** roughly **$700/month** API-retail equivalent at the ceiling. **Pro 5x $100:** roughly **$3,500/month**. **Pro 20x $200:** up to roughly **$14,000/month** ([new 20x sign-ups paused since Sep 10, 2026](https://help.openai.com/en/articles/9793128)). | Best overall. Long tasks, repo-wide work, parallel agents, worktrees, PRs. | [Eligible US and Canadian university students get $100 in ChatGPT credits for Codex](https://developers.openai.com/community/students) |
 | **Claude Code** | **Pro $20:** roughly **$400/month** API-retail equivalent. **Max 5x $100:** roughly **$2,000/month**. **Max 20x $200:** up to roughly **$8,000/month**. Limits reset every five hours, with weekly and monthly caps possible. | Precise edits, planning, front-end work, taste. | Mostly institution-wide through [Claude for Education](https://claude.com/solutions/education), not a universal individual discount |
-| **GitHub Copilot** | Free gives 2,000 completions/month. Pro $10 includes **$15** in monthly AI credits, Pro+ $39 includes **$70**, Max $100 includes **$200**. | IDE integration, autocomplete, boring reliability. | [Copilot Student is free for verified students](https://github.com/education/students) |
+| **GitHub Copilot** | Free gives 2,000 completions/month. Pro $10 includes **$15** in monthly AI credits, Pro+ $39 includes **$70**, Max $100 includes **$200**. | IDE integration, autocomplete, boring reliability. | [Copilot Student is free for verified students](https://github.com/education/students). Auto model selection only, no third-party agents. |
 | **Cursor** | Free tier, then Pro starts at $20/month with a bundled model-usage bucket and metered overage. Cursor does not publish a clean API-dollar equivalent anymore. | Fast editor-first experiments and quick changes. | The blanket free year is dead. Current student discounts are event promotions through [Cursor Students](https://cursor.com/students) |
 | **OpenCode** | The app is open source. Use free models or plug in whatever provider is cheapest this week. | Best open, provider-flexible terminal UX. Parallel sessions are excellent. | Free to install |
-| **Gemini CLI** | **60 requests/minute and 1,000 requests/day** with a personal Google account. That is an absurd free allowance even if the UX is still clunky. | Free terminal backup, huge context, Google Search grounding. | No student verification required |
+| **Gemini CLI** | Free tier ended June 18, 2026. Free users were moved to Antigravity CLI. | Only worth it with a paid Gemini API key. | None |
 | **Google Antigravity** | Plan-dependent limits. Google AI plans expand them, but Google still does not publish a useful universal dollar equivalent. | Planning and agent-first IDE experiments. | Often bundled into Google AI plans |
 | **Google AI Studio** | Free access varies by model and region, and the limits are still difficult to hit for ordinary prototyping. | Prompting, model testing, one-off prototypes. | Free tier |
 | **Perplexity Education Pro** | Discounted Pro access for verified students and educators. | Research, source discovery, and getting unstuck before coding. | [Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro) |
@@ -83,11 +83,9 @@ Would I choose Copilot over Codex for serious autonomous work? No. Would I insta
 
 ### [Gemini CLI](https://github.com/google-gemini/gemini-cli)
 
-The UX is still clunky. The free allowance is still stupidly good.
+This used to be the best free backup: 1,000 requests a day on a personal Google account. That's over. [Google stopped serving free Gemini CLI users on June 18, 2026](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/) and pointed everyone at Antigravity CLI. Gemini CLI still works with a paid API key.
 
-A personal Google account gets **60 requests per minute and 1,000 requests per day**, plus Gemini models with a one-million-token context window, shell and file tools, web fetching, Google Search grounding, and MCP support. That is not a cute demo tier. That is enough free usage to make it a serious backup agent.
-
-I would not make it my primary tool unless the experience improves, but when the good subscriptions are tapped out or the task benefits from huge context and Google Search, use it.
+[Antigravity's free plan](https://antigravity.google/pricing) has "basic weekly rate limits," and early users [report hitting them fast](https://www.theregister.com/ai-ml/2026/05/20/bye-bye-gemini-cli-google-nudges-devs-toward-antigravity/5243605). Try it, but don't plan around it.
 
 ### [OpenCode](https://opencode.ai/)
 
@@ -121,9 +119,11 @@ Here is my [Perplexity referral link](https://plex.it/referrals/8N3ELADE) if you
 
 ### Put Instructions in the Repository
 
-Stop pasting a giant system prompt into every new session. Put an `AGENTS.md` or the tool-specific equivalent in the repository.
+Stop pasting a giant system prompt into every new session. Put an `AGENTS.md` in the repository. Codex, Copilot, Cursor, and OpenCode read it, and [Claude Code reads it too when there's no `CLAUDE.md`](https://code.claude.com/docs/en/memory#agents-md) (since September 2026). One file, every tool.
 
-Include the actual setup commands, test commands, style rules, architecture boundaries, dangerous areas, and definition of done. The agent should not have to rediscover your project every time like it woke up with amnesia.
+Keep it short. It loads every session, and a bloated file gets ignored. Put in what the agent can't figure out by reading the code: setup and test commands, non-obvious conventions, dangerous areas, and what "done" means. Skip folder tours and generic advice. When the agent keeps making the same mistake, add a line. When a line stops mattering, delete it.
+
+If something must happen every single time (formatting, blocking edits to a folder), use a hook instead. Instructions are advice. Hooks are enforced.
 
 ### Use LSP
 
@@ -133,7 +133,9 @@ Turn it on. An agent with LSP can catch mistakes while writing. An agent without
 
 ### Use Skills and Subagents
 
-Skills are reusable workflows. Subagents are fresh workers for narrow jobs.
+Skills are reusable workflows that load only when relevant. Subagents are fresh workers for narrow jobs, with their own context so the main session stays clean.
+
+A skill is just a folder with a `SKILL.md`. It's an [open standard](https://agentskills.io/specification), so the same skill works in Codex (`.agents/skills/`), Claude Code (`.claude/skills/`), Copilot, and most other agents. Write it once.
 
 Use them for independent research, implementation, tests, review, migrations, or separate bug fixes. Do not spawn eight agents into the same branch and call it orchestration. That is just a race condition with a chat interface.
 
@@ -187,7 +189,7 @@ Compass is my reviewed, portable agent setup. It contains the instructions, agen
 | Random vibe-coding experiments | **Cursor** |
 | IDE autocomplete that costs students nothing | **GitHub Copilot** |
 | Open or provider-flexible terminal workflow | **OpenCode** |
-| Free backup with gigantic limits | **Gemini CLI** |
+| Free backup when subscriptions run dry | **OpenCode** with a free model |
 | Research and source discovery | **Perplexity** |
 | Durable instructions, skills, and workflows | **Compass** |
 
@@ -213,7 +215,8 @@ The exact model matters less than the engineering loop around it: give the agent
 - [GitHub Education for students](https://github.com/education/students)
 - [Cursor pricing](https://cursor.com/pricing)
 - [Cursor for Students](https://cursor.com/students)
-- [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+- [Gemini CLI to Antigravity CLI transition](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/)
+- [Antigravity pricing](https://antigravity.google/pricing)
 - [OpenCode](https://opencode.ai/)
 - [Perplexity Education Pro](https://www.perplexity.ai/help-center/en/articles/12590157-what-is-education-pro)
 
